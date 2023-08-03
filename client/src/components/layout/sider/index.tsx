@@ -34,7 +34,7 @@ import {
 
 import { Title as DefaultTitle } from "../title";
 
-export const Sider: typeof DefaultSider = ({ render }) => {
+ const Sider: typeof DefaultSider = ({ render }) => {
     const [collapsed, setCollapsed] = useState(false);
     const [opened, setOpened] = useState(false);
 
@@ -473,3 +473,5 @@ export const Sider: typeof DefaultSider = ({ render }) => {
         </>
     );
 };
+
+export default Sider;
