@@ -24,7 +24,7 @@ const Home = () => {
           </Typography>
 
           <Box mt='20px' display='flex'
-           flexWrap='wrap' gap={4}>
+           flexWrap="wrap" gap={4}>
 
                <PieChart
                     title="Properties for Sale"
