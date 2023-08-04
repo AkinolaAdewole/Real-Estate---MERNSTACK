@@ -22,6 +22,13 @@ import routerBindings, {
   NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
+
+import PeoplAltOutlined from '@mui/icons-material/PeopleAltOutlined';
+import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
+import VillaOutlined from "@mui/icons-material/VillaOutlined";
+import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
+import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
+
 import dataProvider from "@refinedev/simple-rest";
 import axios, { AxiosRequestConfig } from "axios";
 import { CredentialResponse } from "interfaces/google";
@@ -175,34 +182,36 @@ function App() {
                 {
                   name: "Properties",
                   list: AllProperties,
-                  create: PropertyDetails,
-                  edit: EditProperty,
-                  show: "/blog-posts/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
+                  show:PropertyDetails,
+                  create:CreateProperty,
+                  edit:EditProperty,
+                  icon: <VillaOutlined />
                 },
 
                 {
                   name: "Agents",
                   list: Agents,
                   show: AgentProfile,
+                  icon:<PeoplAltOutlined />
                 },
+
                 {
                   name:"Reviews",
                   list: Home,
+                  icon:<StarOutlineRounded />
                 },
 
                 {
                   name:"Messages",
                   list:Home,
-                  
+                  icon:<ChatBubbleOutline />
                 },
 
                 {
                   name:"My profile",
                   list:MyProfile,
-                  options:{label: "My profile"}
+                  options:{label: "My profile"},
+                  icon:<AccountCircleOutlined />
                 }
               ]}
               options={{
@@ -214,46 +223,7 @@ function App() {
 
 
 
-              <Routes>
-                <Route
-                  element={
-                    <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Header  />}>
-                        <Outlet />
-                      </ThemedLayoutV2>
-                    </Authenticated>
-                  }
-                >
-
-                  <Route
-                    index
-                    element={<NavigateToResource resource="blog_posts" />}
-                  />
-                  <Route path="/blog-posts">
-                    <Route index element={<BlogPostList />} />
-                    <Route path="create" element={<BlogPostCreate />} />
-                    <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} />
-                  </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
-                  </Route>
-                  <Route path="*" element={<ErrorComponent />} />
-                </Route>
-                <Route
-                  element={
-                    <Authenticated fallback={<Outlet />}>
-                      <NavigateToResource />
-                    </Authenticated>
-                  }
-                >
-                  <Route path="/login" element={<Login />} />
-                </Route>
-              </Routes>
-
+              
               <RefineKbar />
               <UnsavedChangesNotifier />
               <DocumentTitleHandler />
