@@ -219,15 +219,9 @@ function App() {
                 warnWhenUnsavedChanges: true,
                 projectId: "SN84TC-6PiH5r-W8E8zN",
               }}
-            >
-
-
 
               
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
+            />
           </RefineSnackbarProvider>
         </ColorModeContextProvider>
       </RefineKbarProvider>
