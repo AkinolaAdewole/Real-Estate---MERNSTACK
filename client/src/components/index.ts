@@ -12,7 +12,7 @@ import TotalRevenue from "./charts/TotalRevenue";
 import AgentCard from "./Agent/AgentCard";
 
 //Home
-import Topagent from "./home/Topagent";
+import TopAgent from "./home/Topagent";
 
 export {
     Profile,
@@ -22,5 +22,5 @@ export {
     PropertyReferrals,
     TotalRevenue,
     AgentCard,
-    Topagent
+    TopAgent
 }

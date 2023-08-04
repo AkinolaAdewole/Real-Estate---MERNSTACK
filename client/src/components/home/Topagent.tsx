@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Topagent = () => {
+const TopAgent = () => {
   return (
     <div>Topagent</div>
   )
 }
 
-export default Topagent
+export default TopAgent
