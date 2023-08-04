@@ -51,11 +51,11 @@ import {
   Home,
 } from "pages";
 
-Import {Sider, Layout, Title, Header} from "components/layout"
+import {Sider, Layout, Title, Header} from "components/layout"
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { parseJwt } from "utils/parse-jwt";
-import { Header } from "./components/header/Header";
+// import { Header } from "./components/header/Header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 
 const axiosInstance = axios.create();
@@ -188,6 +188,22 @@ function App() {
                   list: Agents,
                   show: AgentProfile,
                 },
+                {
+                  name:"Reviews",
+                  list: Home,
+                },
+
+                {
+                  name:"Messages",
+                  list:Home,
+                  
+                },
+
+                {
+                  name:"My profile",
+                  list:MyProfile,
+                  options:{label: "My profile"}
+                }
               ]}
               options={{
                 syncWithLocation: true,
@@ -195,16 +211,20 @@ function App() {
                 projectId: "SN84TC-6PiH5r-W8E8zN",
               }}
             >
+
+
+
               <Routes>
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Header isSticky={true} />}>
+                      <ThemedLayoutV2 Header={() => <Header  />}>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
                   }
                 >
+
                   <Route
                     index
                     element={<NavigateToResource resource="blog_posts" />}
