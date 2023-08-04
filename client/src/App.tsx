@@ -211,7 +211,6 @@ function App() {
                   name:"My profile",
                   list:MyProfile,
                   options:{label: "My profile"},
-                  icon:<AccountCircleOutlined />
                 }
               ]}
               options={{
@@ -227,7 +226,7 @@ function App() {
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Header  />}>
+                      <ThemedLayoutV2 Header={() => <Home  />}>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
@@ -239,7 +238,7 @@ function App() {
                     element={<NavigateToResource resource="blog_posts" />}
                   />
                   <Route path="/blog-posts">
-                    <Route index element={<BlogPostList />} />
+                    <Route index element={<Home />} />
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
                     <Route path="show/:id" element={<BlogPostShow />} />

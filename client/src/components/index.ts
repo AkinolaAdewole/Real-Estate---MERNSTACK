@@ -12,7 +12,7 @@ import TotalRevenue from "./charts/TotalRevenue";
 import AgentCard from "./Agent/AgentCard";
 
 //Home
-import TopAgent from "./home/Topagent";
+import TopAgent from "./home/TopAgent"
 
 export {
     Profile,

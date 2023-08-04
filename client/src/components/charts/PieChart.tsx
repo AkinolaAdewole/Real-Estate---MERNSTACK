@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const PieChart = () => {
-  return (
-    <div>PieChart</div>
-  )
+interface PieChartProps {
+  title: string;
 }
 
-export default PieChart
+const PieChart: React.FC<PieChartProps> = ({ title }) => {
+  return (
+    <div>PieChart</div>
+  );
+};
+
+export default PieChart;
