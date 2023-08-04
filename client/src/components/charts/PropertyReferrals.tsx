@@ -9,8 +9,20 @@ interface ProgressBarProps {
 
 const ProgressBarProps=({title,
     percentage, color}:ProgressBarProps)=>(
+
       <Box width='100%' >
-        <Stack direction='row'></Stack>
+        <Stack direction='row' alignItems='center'
+          justifyContent='space-between'>
+            <Typography fontSize={16} fontWeight={500}
+              color='#11142d'>
+                {title}
+            </Typography>
+
+            <Typography fontSize={16} fontWeight={500}
+              color='#11142d'>
+                 {percentage}%
+            </Typography>
+          </Stack>
       </Box>
     )
 
