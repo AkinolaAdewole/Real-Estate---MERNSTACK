@@ -26,7 +26,7 @@ const Home = () => {
           <Box mt='20px' display='flex'
            flexWrap='wrap' gap={4}>
 
-<PieChart
+               <PieChart
                     title="Properties for Sale"
                     value={684}
                     series={[75, 25]}
@@ -53,6 +53,17 @@ const Home = () => {
                     
 
            </Box>
+
+           <Stack
+                mt="25px"
+                width="100%"
+                direction={{ xs: "column", lg: "row" }}
+                gap={4}
+            >
+                <TotalRevenue />
+                <PropertyReferrals />
+            </Stack>
+
 
         </Box>
   )
