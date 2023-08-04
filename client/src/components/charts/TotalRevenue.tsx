@@ -8,18 +8,18 @@ import { TotalRevenueOptions, TotalRevenueSeries } from "./chart.config";
 
 const TotalRevenue = () => {
   return (
-    <Box id='chart' p={4} flex={1} bgcolor='#fcfcfc' 
+    <Box id='chart' p={4} flex={1} bgcolor='#fcfcfc' minHeight='400px'
        display='flex' flexDirection="column" borderRadius="15px" >
 
           <Typography>
             Total Revenue
           </Typography>
 
-          <Stack my={20} direction="row" gap={4} flexWrap="wrap">
+          <Stack my='18px' direction="row" gap={4} flexWrap="wrap">
             <Typography fontSize={28} 
               fontWeight={700} color='#11142d'>$236,532</Typography>
 
-            <Stack direction='row'>
+            <Stack direction='row' alignItems="center" gap={1}>
                 <ArrowCircleUpRounded sx={{ fontSize:25, color:'#475be8'}}/>
 
                 <Stack>
@@ -31,9 +31,16 @@ const TotalRevenue = () => {
                     than last month
                   </Typography>
                 </Stack>  
-            </Stack>
 
+            </Stack>
           </Stack> 
+
+          <ReactApexChart
+                series={TotalRevenueSeries}
+                type="bar"
+                height={280}
+                options={TotalRevenueOptions}
+            />
 
     </Box>
   )
