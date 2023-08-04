@@ -17,7 +17,7 @@ import {
 
 const Home = () => {
   return (
-        <Box>
+        <Box >
           <Typography fontSize={25} fontWeight={700}
             color='#11142D'>
              Dashboard
