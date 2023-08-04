@@ -13,7 +13,7 @@ const GOOGLE_CLIENT_ID =
   "435508450474-bkfkcbjkunu6vc97168nk4btki8jntr3.apps.googleusercontent.com"
  // "1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com";
 
-export const Login: React.FC = () => {
+ const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
 
   const GoogleButton = (): JSX.Element => {
@@ -93,3 +93,5 @@ export const Login: React.FC = () => {
     
   );
 };
+
+export default Login;
