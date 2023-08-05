@@ -57,15 +57,19 @@ const Home = () => {
 
               </Box>
 
-              <Stack
-                    mt="25px"
-                    width="100%"
-                    direction={{ xs: "column", lg: "row" }}
-                    gap={4}
-                >
-                    <TotalRevenue />
-                    <PropertyReferrals />
-                </Stack>
+              <Container>
+                    <Stack
+                          mt="25px"
+                          width="100%"
+                          direction={{ xs: "column", lg: "row" }}
+                          gap={4}
+                          display='flex'
+                      >
+                            <TotalRevenue />
+                            <PropertyReferrals />
+                          
+                      </Stack>
+              </Container>
 
           </Container>
           

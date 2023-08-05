@@ -35,14 +35,14 @@ const ProgressBar=({title,
 
 const PropertyReferrals = () => {
   return (
-    <Box id='chart' p={4} minWidth='490' bgcolor='#fcfcfc' minHeight='400px'
+    <Box id='chart' p={4} minWidth='450' bgcolor='#fcfcfc'
        display='flex' flexDirection="column" borderRadius="15px" >
 
          <Typography>
             Property Referrals
           </Typography>
 
-          <Stack my='20px' direction='column' gap={4}>
+          <Stack my='15px' direction='column' gap={4}>
             {PropertyReferralsInfo.map((bar)=>(
               <ProgressBar key={bar.title} {... bar} />
             ))}
