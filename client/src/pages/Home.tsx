@@ -57,7 +57,7 @@ const Home = () => {
 
               </Box>
 
-              <Container>
+              <Container>                                                                                                                                                                                                                                                                                                                                                                                
                     <Stack
                           mt="25px"
                           width="100%"
