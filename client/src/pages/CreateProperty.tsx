@@ -19,9 +19,10 @@ const CreateProperty = () => {
 
   const handleImageChange=()=>{};
   const onFinishHandler=()=>{};
+
   return (
       <Form
-      type="create"
+      type="Create a property"
       register={register}
       onFinish={onFinish}
       formLoading={formLoading}
