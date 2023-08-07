@@ -57,7 +57,7 @@ const Home = () => {
 
               </Box>
 
-              <Container>                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                
                     <Stack
                           mt="25px"
                           width="100%"
@@ -69,7 +69,7 @@ const Home = () => {
                             <PropertyReferrals />
                           
                       </Stack>
-              </Container>
+
 
           </Container>
           

@@ -28,6 +28,7 @@ import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
 import VillaOutlined from "@mui/icons-material/VillaOutlined";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
 import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
+import Dashboard  from "@mui/icons-material/Dashboard";
 
 import dataProvider from "@refinedev/simple-rest";
 import axios, { AxiosRequestConfig } from "axios";
@@ -173,6 +174,13 @@ function App() {
               authProvider={authProvider}
               i18nProvider={i18nProvider}
               resources={[
+
+                {
+                  name:"Dashboard",
+                  list:Home,
+                  icon:<Dashboard/>
+                },
+
                 {
                   name: "Properties",
                   list: AllProperties,
@@ -220,7 +228,7 @@ function App() {
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Home />}>
+                      <ThemedLayoutV2>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
@@ -229,16 +237,45 @@ function App() {
 
                   <Route
                     index
-                    element={<NavigateToResource resource="Properties" />}
+                    element={<NavigateToResource resource="Dashboard" />}
                   />
+
+                  <Route path="/Dashboard">
+                     <Route index element={<Home/>}/>
+                  </Route>
+                 
+
+
                   <Route path="/Properties">
                     <Route index element={<AllProperties/>} />
                     <Route path="create" element={<CreateProperty />} />
                     <Route path="edit/:id" element={<EditProperty />} />
                     <Route path="show/:id" element={<PropertyDetails />} />
                   </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
+
+                  <Route path="/Agents">
+                    <Route index element={<Agents />} />
+                    <Route path="create" element={<CategoryCreate />} />
+                    <Route path="edit/:id" element={<CategoryEdit />} />
+                    <Route path="show/:id" element={<CategoryShow />} />
+                  </Route>
+
+                  <Route path="/Reviews">
+                    <Route index element={<Agents />} />
+                    <Route path="create" element={<CategoryCreate />} />
+                    <Route path="edit/:id" element={<CategoryEdit />} />
+                    <Route path="show/:id" element={<CategoryShow />} />
+                  </Route>
+
+                  <Route path="/Messsages">
+                    <Route index element={<Agents />} />
+                    <Route path="create" element={<CategoryCreate />} />
+                    <Route path="edit/:id" element={<CategoryEdit />} />
+                    <Route path="show/:id" element={<CategoryShow />} />
+                  </Route>
+
+                  <Route path="/My Profile">
+                    <Route index element={<Agents />} />
                     <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
                     <Route path="show/:id" element={<CategoryShow />} />
