@@ -8,9 +8,7 @@ import { v2 as cloudinary } from "cloudinary";
 dotenv.config();
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+   
 });
 
 const getAllProperties = async (req, res) => {
@@ -50,6 +48,7 @@ const getAllProperties = async (req, res) => {
     }
 };
 
+
 const getPropertyDetail = async (req, res) => {
     const { id } = req.params;
     const propertyExists = await Property.findOne({ _id: id }).populate(
@@ -62,6 +61,7 @@ const getPropertyDetail = async (req, res) => {
         res.status(404).json({ message: "Property not found" });
     }
 };
+
 
 const createProperty = async (req, res) => {
     try {
@@ -78,7 +78,7 @@ const createProperty = async (req, res) => {
         const session = await mongoose.startSession();
         session.startTransaction();
 
-        const user = await User.findOne({ email }).session(session);
+        const user = await userModel.findOne({ email }).session(session);
 
         if (!user) throw new Error("User not found");
 
