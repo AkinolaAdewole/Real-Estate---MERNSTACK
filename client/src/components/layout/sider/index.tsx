@@ -122,13 +122,18 @@ import { Title as DefaultTitle } from "../title";
                                             },
                                             backgroundColor: "transparent",
                                         },
+                                        
+                                        margin: '10px auto',
+                                        borderRadius:'12px',
+                                        minHeight:'56px',
+                                        width:'90%'
                                     }}
                                 >
                                     <ListItemIcon
                                         sx={{
                                             justifyContent: "center",
                                             minWidth: 36,
-                                            color: "primary.contrastText",
+                                            color: isSelected? 'fff': '#808191',
                                         }}
                                     >
                                         {icon ?? <ListOutlined />}
@@ -141,6 +146,7 @@ import { Title as DefaultTitle } from "../title";
                                             fontWeight: isSelected
                                                 ? "bold"
                                                 : "normal",
+                                            color:'#808191',
                                         }}
                                     />
                                     {!collapsed &&

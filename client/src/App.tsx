@@ -32,12 +32,6 @@ import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
 import dataProvider from "@refinedev/simple-rest";
 import axios, { AxiosRequestConfig } from "axios";
 import { CredentialResponse } from "interfaces/google";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "pages/blog-posts";
 
 import {
   CategoryCreate,
@@ -181,7 +175,7 @@ function App() {
               resources={[
                 {
                   name: "Properties",
-                  list: '/AllProperties',
+                  list: AllProperties,
                   show:'PropertyDetails',
                   create:CreateProperty,
                   edit:EditProperty,
@@ -226,7 +220,7 @@ function App() {
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Home  />}>
+                      <ThemedLayoutV2 Header={() => <Home />}>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
@@ -237,8 +231,8 @@ function App() {
                     index
                     element={<NavigateToResource resource="Properties" />}
                   />
-                  <Route path="Properties">
-                    <Route index element={<AllProperties />} />
+                  <Route path="/Properties">
+                    <Route index element={<AllProperties/>} />
                     <Route path="create" element={<CreateProperty />} />
                     <Route path="edit/:id" element={<EditProperty />} />
                     <Route path="show/:id" element={<PropertyDetails />} />
@@ -249,10 +243,11 @@ function App() {
                     <Route path="edit/:id" element={<CategoryEdit />} />
                     <Route path="show/:id" element={<CategoryShow />} />
                   </Route>
+
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
 
-                
+
                 <Route
                   element={
                     <Authenticated fallback={<Outlet />}>
