@@ -1,14 +1,15 @@
 import React,{useState} from 'react'
 import { useGetIdentity } from '@refinedev/core'
 import {useForm } from '@refinedev/react-hook-form';
-import { FieldValue } from 'react-hook-form';
+import { FieldValue, FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Form from 'components/common/Form';
 
 const CreateProperty = () => {
   const navigate = useNavigate();
 
-  const {data:user}= useGetIdentity();
+  const {data: user}= useGetIdentity({v3LegacyAuthProviderCompatible: true,});
+
   const[propertyImage, setPropertyImage]=useState({
                   name:'',
                      url:'' });
@@ -39,7 +40,15 @@ const CreateProperty = () => {
   // Within the reader function, a Promise is returned that will resolve with the Base64-encoded data URL 
   // when the file is successfully read.
 
-  const onFinishHandler=()=>{};
+
+   // onFinishHandler is where Refine will get all data and pass it to the backend
+  const onFinishHandler=async(data:FieldValues)=>{
+    if(!propertyImage.name){
+      alert('Please, select an image')
+    } else{
+      await onFinish({...data, photo:propertyImage.url, email:user.email})
+    }
+  };
 
   return (
       <Form
