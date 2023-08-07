@@ -184,7 +184,7 @@ function App() {
                 {
                   name: "Properties",
                   list: AllProperties,
-                  show:'PropertyDetails',
+                  show: PropertyDetails,
                   create:CreateProperty,
                   edit:EditProperty,
                   icon: <VillaOutlined />
@@ -255,27 +255,19 @@ function App() {
 
                   <Route path="/Agents">
                     <Route index element={<Agents />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                    <Route path="/Agents/AgentProfile" element={<AgentProfile />} />
                   </Route>
 
                   <Route path="/Reviews">
-                    <Route index element={<Agents />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                    <Route index element={<Home />} />
                   </Route>
 
-                  <Route path="/Messsages">
-                    <Route index element={<Agents />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                  <Route path="/Messages">
+                    <Route index element={<Home />} />
                   </Route>
 
                   <Route path="/My Profile">
-                    <Route index element={<Agents />} />
+                    <Route index element={<MyProfile />} />
                     <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
                     <Route path="show/:id" element={<CategoryShow />} />
