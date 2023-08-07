@@ -8,7 +8,20 @@ import { PropertyCard, CustomButton } from 'components';
 const AllProperties = () => {
   const navigate = useNavigate();
   return (
-    <div>All-Properties</div>
+    <Box>
+      <Stack direction='row' justifyContent='space-between'
+        alignItems='center'>
+         <Typography fontWeight={700} color="#11142d">
+           All Properties
+         </Typography>
+
+         <CustomButton title="Add Properties"
+           handleClick={()=>navigate('/Properties/create')}
+            backgroundColor='#475be8'
+            color='#fcfcfc'
+             icon={<Add />}/>
+       </Stack>
+    </Box>
   )
 }
 
