@@ -86,6 +86,7 @@ const Form = ({type, register, handleSubmit,
 
 
                     <Stack direction='row' gap={4}>
+
                       <FormControl sx={{flex:1}}>
                       <FormHelperText
                                 sx={{
@@ -143,6 +144,7 @@ const Form = ({type, register, handleSubmit,
                             />
                         </FormControl>
                     </Stack>
+
 
                     <FormControl>
                         <FormHelperText
@@ -204,6 +206,7 @@ const Form = ({type, register, handleSubmit,
                                 />
                             </Button>
                         </Stack>
+
                         <Typography
                             fontSize={14}
                             color="#808191"
@@ -211,6 +214,7 @@ const Form = ({type, register, handleSubmit,
                         >
                             {propertyImage?.name}
                         </Typography>
+                        
                     </Stack>
 
                     <CustomButton
