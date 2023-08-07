@@ -181,8 +181,8 @@ function App() {
               resources={[
                 {
                   name: "Properties",
-                  list: AllProperties,
-                  show:PropertyDetails,
+                  list: '/AllProperties',
+                  show:'PropertyDetails',
                   create:CreateProperty,
                   edit:EditProperty,
                   icon: <VillaOutlined />
@@ -235,13 +235,13 @@ function App() {
 
                   <Route
                     index
-                    element={<NavigateToResource resource="blog_posts" />}
+                    element={<NavigateToResource resource="Properties" />}
                   />
-                  <Route path="/blog-posts">
-                    <Route index element={<Home />} />
-                    <Route path="create" element={<BlogPostCreate />} />
-                    <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} />
+                  <Route path="Properties">
+                    <Route index element={<AllProperties />} />
+                    <Route path="create" element={<CreateProperty />} />
+                    <Route path="edit/:id" element={<EditProperty />} />
+                    <Route path="show/:id" element={<PropertyDetails />} />
                   </Route>
                   <Route path="/categories">
                     <Route index element={<CategoryList />} />
@@ -251,6 +251,8 @@ function App() {
                   </Route>
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
+
+                
                 <Route
                   element={
                     <Authenticated fallback={<Outlet />}>
