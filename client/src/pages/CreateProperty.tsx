@@ -13,11 +13,14 @@ const CreateProperty = () => {
                   name:'',
                      url:'' });
 
-  const { 
-    refineCore:{onFinish, formLoading}, 
-    register, handleSubmit}= useForm();
+  const { refineCore:{onFinish, formLoading}, 
+           register, handleSubmit}   = useForm();
 
+
+          // The handleImageChange function is defined with a parameter file of type File.
   const handleImageChange=(file:File)=>{
+    // Inside the function, a constant named reader is declared as a 
+    // function that takes a readFile parameter of type File and returns a Promise<string>.
       const reader = (readFile: File) =>
       new Promise<string>((resolve, reject) => {
           const fileReader = new FileReader();
@@ -29,6 +32,12 @@ const CreateProperty = () => {
             setPropertyImage({ name: file?.name, url: result }),
         );
   };
+
+  // The reader function uses the FileReader API to read the content of the readFile and convert it to a Base64-encoded data URL. 
+  // It sets up an onload event handler to handle the successful reading of the file.
+
+  // Within the reader function, a Promise is returned that will resolve with the Base64-encoded data URL 
+  // when the file is successfully read.
 
   const onFinishHandler=()=>{};
 
