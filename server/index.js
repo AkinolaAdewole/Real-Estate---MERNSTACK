@@ -27,7 +27,7 @@ const startserver= async()=>{
         connectDB(process.env.MongoDB_URL)
         
         app.listen(port,()=>{
-            console.log('connected');
+            console.log(`connected at port ${port}`);
         })
     } catch (error) {
         console.error(error);

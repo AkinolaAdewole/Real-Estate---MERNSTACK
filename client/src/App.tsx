@@ -78,12 +78,13 @@ function App() {
   const { t, i18n } = useTranslation();
 
   const authProvider: AuthBindings = {
+
     login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
 
        if(profileObj){
         const response = await fetch(
-          'http://localhost:3000/api/v1/users',
+          'http://localhost:4200/api/v1/users',
           {
             method:"POST",
             headers:{"content-Type":"application/json"},
@@ -94,27 +95,30 @@ function App() {
             }),
           }
         );
+        const data = await response.json();
 
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...profileObj,
-            avatar: profileObj.picture,
-          })
-        );
-
-        localStorage.setItem("token", `${credential}`);
-
-        return {
-          success: true,
-          redirectTo: "/",
-        };
+        if(response.status=== 200){
+                localStorage.setItem(
+                  "user",
+                  JSON.stringify({
+                    ...profileObj,
+                    avatar: profileObj.picture,
+                    userid: data._id,
+                  })
+                );
+        } else{
+          return Promise.reject();
+        }
        }
 
+       
+       localStorage.setItem("token", `${credential}`);
 
-      return {
-        success: false,
-      };
+       return {
+        success: true,
+         redirectTo: "/",
+       }
+
     },
 
 
