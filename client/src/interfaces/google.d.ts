@@ -14,6 +14,12 @@ export interface IdConfiguration {
   intermediate_iframe_close_callback?: (...args: any[]) => void;
 }
 
+export interface Credential {
+  id: string;
+  password: string;
+}
+
+
 export interface CredentialResponse {
   credential?: string;
   select_by?:
@@ -69,11 +75,6 @@ export interface PromptMomentNotification {
 export interface RevocationResponse {
   successful: boolean;
   error: string;
-}
-
-export interface Credential {
-  id: string;
-  password: string;
 }
 
 export interface Google {

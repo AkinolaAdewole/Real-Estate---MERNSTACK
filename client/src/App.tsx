@@ -59,6 +59,10 @@ import { parseJwt } from "utils/parse-jwt";
 // import { Header } from "./components/header/Header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 
+interface CredentialResponses {
+  credential: string; // Update this to match the actual structure of your CredentialResponse
+}
+
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
   const token = localStorage.getItem("token");
@@ -72,6 +76,8 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 
   return request;
 });
+
+
 
 function App() {
   const { t, i18n } = useTranslation();
