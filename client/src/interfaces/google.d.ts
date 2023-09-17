@@ -19,7 +19,6 @@ export interface Credential {
   password: string;
 }
 
-
 export interface CredentialResponse {
   credential?: string;
   select_by?:

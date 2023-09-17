@@ -113,7 +113,10 @@ function App() {
                 );
         } else{
           console.log("Login failed with response status:", response.status);
-          return Promise.reject();
+          return Promise.reject({
+            success: false,
+            message: "Login failed",
+          });
         }
        }
 
