@@ -1,0 +1,51 @@
+login: async ({ credential }: CredentialResponse) => {
+  const profileObj = credential ? parseJwt(credential) : null;
+
+  if (profileObj) {
+    const response = await fetch(
+      'http://localhost:4200/api/v1/users',
+      {
+        method: "POST",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify({
+          name: profileObj.name,
+          email: profileObj.email,
+          avatar: profileObj.picture,
+        }),
+      }
+    );
+    const data = await response.json();
+
+    if (response.status === 200) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ...profileObj,
+          avatar: profileObj.picture,
+          userid: data._id,
+        })
+      );
+      localStorage.setItem("token", `${credential}`);
+
+      // Return a resolved promise when login is successful
+      return Promise.resolve({
+        success: true,
+        redirectTo: "/",
+      });
+    } else {
+      console.log("Login failed with response status:", response.status);
+
+      // Return a rejected promise when login fails
+      return Promise.reject({
+        success: false,
+        message: "Login failed",
+      });
+    }
+  } else {
+    // Handle the case when there's no profileObj (e.g., no credential provided)
+    return Promise.reject({
+      success: false,
+      message: "No credential provided",
+    });
+  }
+},
