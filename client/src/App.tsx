@@ -106,6 +106,7 @@ function App() {
                   })
                 );
         } else{
+          console.log("Login failed with response status:", response.status);
           return Promise.reject();
         }
        }

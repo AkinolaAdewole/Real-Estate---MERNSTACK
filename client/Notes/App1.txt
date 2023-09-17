@@ -1,0 +1,29 @@
+interface UserData {
+  name: string;
+  email: string;
+  avatar: string;
+  // Add any other properties as needed
+}
+
+interface ResponseData {
+  status: number;
+  message: string;
+  data: any; // Adjust this type to match the actual data structure
+}
+
+interface CredentialResponse {
+  // Define the structure of your credential response
+}
+
+// Usage example:
+const userData: UserData = {
+  name: "John Doe",
+  email: "john@example.com",
+  avatar: "/images/john.jpg"
+};
+
+const responseData: ResponseData = {
+  status: 200,
+  message: "Success",
+  data: { /* ... */ }
+};
