@@ -53,7 +53,6 @@ import {
   Home,
 } from "pages";
 
-import {Sider, Layout, Title, Header} from "components/layout"
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { parseJwt } from "utils/parse-jwt";
