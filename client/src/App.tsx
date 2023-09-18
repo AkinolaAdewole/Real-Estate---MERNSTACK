@@ -84,117 +84,117 @@ function App() {
 
   const authProvider: AuthBindings = {
 
-    // login: async ({ credential }: CredentialResponse) => {
-    //   const profileObj = credential ? parseJwt(credential) : null;
-
-    //    if(profileObj){
-    //     const response = await fetch(
-    //       'http://localhost:4200/api/v1/users',
-    //       {
-    //         method:"POST",
-    //         headers:{"content-Type":"application/json"},
-    //         body: JSON.stringify({
-    //           name:profileObj.name,
-    //           email:profileObj.email,
-    //           avatar:profileObj.picture,
-    //         }),
-    //       }
-    //     );
-    //     const data = await response.json();
-
-    //     if(response.status=== 200){
-    //             localStorage.setItem(
-    //               "user",
-    //               JSON.stringify({
-    //                 ...profileObj,
-    //                 avatar: profileObj.picture,
-    //                 userid: data._id,
-    //               })
-    //             );
-    //     } else{
-    //       console.log("Login failed with response status:", response.status);
-    //       return Promise.reject({
-    //         success: false,
-    //         message: "Login failed",
-    //       });
-    //     }
-
-    //    }
-
-       
-    //    localStorage.setItem("token", `${credential}`);
-
-    //    return {
-    //     success: true,
-    //      redirectTo: "/",
-    //    }
-
-    // },
-
     login: async ({ credential }: CredentialResponse) => {
-      try {
-        const profileObj = credential ? parseJwt(credential) : null;
-    
-        if (profileObj) {
-          const response = await fetch(
-            'http://localhost:3500/api/v1/users',
-            {
-              method: "POST",
-              headers: { "content-Type": "application/json" },
-              body: JSON.stringify({
-                name: profileObj.name,
-                email: profileObj.email,
-                avatar: profileObj.picture,
-              }),
-            }
-          );
-          const data = await response.json();
-    
-          if (response.status === 200) {
-            localStorage.setItem(
-              "user",
-              JSON.stringify({
-                ...profileObj,
-                avatar: profileObj.picture,
-                userid: data._id,
-              })
-            );
-            localStorage.setItem("token", `${credential}`);
-    
-            // Return a resolved promise when login is successful
-            return Promise.resolve({
-              success: true,
-              redirectTo: "/",
-            });
-          } else {
-            console.log("Login failed with response status:", response.status);
-    
-            // Return a resolved promise with an error message when login fails
-            return Promise.resolve({
-              success: false,
-              message: "Login failed",
-            });
+      const profileObj = credential ? parseJwt(credential) : null;
+
+       if(profileObj){
+        const response = await fetch(
+          'http://localhost:4200/api/v1/users',
+          {
+            method:"POST",
+            headers:{"content-Type":"application/json"},
+            body: JSON.stringify({
+              name:profileObj.name,
+              email:profileObj.email,
+              avatar:profileObj.picture,
+            }),
           }
-        } else {
-          // Handle the case when there's no profileObj (e.g., no credential provided)
-          console.log("No credential provided");
-          
-          // Return a resolved promise with an error message
-          return Promise.resolve({
+        );
+        const data = await response.json();
+
+        if(response.status=== 200){
+                localStorage.setItem(
+                  "user",
+                  JSON.stringify({
+                    ...profileObj,
+                    avatar: profileObj.picture,
+                    userid: data._id,
+                  })
+                );
+        } else{
+          console.log("Login failed with response status:", response.status);
+          return Promise.reject({
             success: false,
-            message: "No credential provided",
+            message: "Login failed",
           });
         }
-      } catch (error) {
-        console.error("Error during login:", error);
-    
-        // Return a resolved promise with an error message when there's an exception
-        return Promise.resolve({
-          success: false,
-          message: "An error occurred during login",
-        });
-      }
+
+       }
+
+       
+       localStorage.setItem("token", `${credential}`);
+
+       return {
+        success: true,
+         redirectTo: "/",
+       }
+
     },
+
+    // login: async ({ credential }: CredentialResponse) => {
+    //   try {
+    //     const profileObj = credential ? parseJwt(credential) : null;
+    
+    //     if (profileObj) {
+    //       const response = await fetch(
+    //         'http://localhost:3500/api/v1/users',
+    //         {
+    //           method: "POST",
+    //           headers: { "content-Type": "application/json" },
+    //           body: JSON.stringify({
+    //             name: profileObj.name,
+    //             email: profileObj.email,
+    //             avatar: profileObj.picture,
+    //           }),
+    //         }
+    //       );
+    //       const data = await response.json();
+    
+    //       if (response.status === 200) {
+    //         localStorage.setItem(
+    //           "user",
+    //           JSON.stringify({
+    //             ...profileObj,
+    //             avatar: profileObj.picture,
+    //             userid: data._id,
+    //           })
+    //         );
+    //         localStorage.setItem("token", `${credential}`);
+    
+    //         // Return a resolved promise when login is successful
+    //         return Promise.resolve({
+    //           success: true,
+    //           redirectTo: "/",
+    //         });
+    //       } else {
+    //         console.log("Login failed with response status:", response.status);
+    
+    //         // Return a resolved promise with an error message when login fails
+    //         return Promise.resolve({
+    //           success: false,
+    //           message: "Login failed",
+    //         });
+    //       }
+    //     } else {
+    //       // Handle the case when there's no profileObj (e.g., no credential provided)
+    //       console.log("No credential provided");
+          
+    //       // Return a resolved promise with an error message
+    //       return Promise.resolve({
+    //         success: false,
+    //         message: "No credential provided",
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.error("Error during login:", error);
+    
+    //     // Return a resolved promise with an error message when there's an exception
+    //     return Promise.resolve({
+    //       success: false,
+    //       message: "An error occurred during login",
+    //     });
+    //   }
+    // },
         
 
 
