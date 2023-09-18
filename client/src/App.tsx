@@ -89,7 +89,7 @@ function App() {
 
        if(profileObj){
         const response = await fetch(
-          'http://localhost:4200/api/v1/users',
+          'http://localhost:3500/api/v1/users',
           {
             method:"POST",
             headers:{"content-Type":"application/json"},
@@ -113,15 +113,13 @@ function App() {
                 );
         } else{
           console.log("Login failed with response status:", response.status);
-          return Promise.reject({
-            success: false,
-            message: "Login failed",
-          });
+          // return Promise.reject({
+          //   success: false,
+          //   message: "Login failed",
+          // });
         }
 
        }
-
-       
        localStorage.setItem("token", `${credential}`);
 
        return {
@@ -254,6 +252,9 @@ function App() {
     changeLocale: (lang: string) => i18n.changeLanguage(lang),
     getLocale: () => i18n.language,
   };
+
+
+
 
   return (
     <BrowserRouter>
