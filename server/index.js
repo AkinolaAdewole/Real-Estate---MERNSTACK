@@ -7,14 +7,12 @@ const app = express();
 app.use(cors(
     {
         origin: "http://localhost:3000",
-        // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        // headers: 'Origin, X-Requested-With, Content-Type, Accept',
       }
 ));
 
 import connectDB from "./MongoDB/connect.js";
-import userRouter from './routes/user.routes.js';
-import propertyRouter from "./routes/property.routes.js";
+import userRoutes from './routes/userRoutes.js';
+import propertyRoutes from "./routes/propertyRoutes.js";
 
 
 
@@ -25,8 +23,8 @@ app.get('/', (req,res)=>{
     res.send({message:"Hello world"});
 });
 
-app.use('/api/users', userRouter);
-app.use('/api/properties', propertyRouter);
+app.use('/api/users', userRoutes);
+app.use('/api/properties', propertyRoutes);
 
 
 const port= 3800;
