@@ -220,7 +220,7 @@ function App() {
                 },
 
                 {
-                  name: "Properties",
+                  name: "properties",
                   list: AllProperties,
                   show: PropertyDetails,
                   create:CreateProperty,
@@ -284,7 +284,7 @@ function App() {
                  
 
 
-                  <Route path="/Properties">
+                  <Route path="/properties">
                     <Route index element={<AllProperties/>} />
                     <Route path="create" element={<CreateProperty />} />
                     <Route path="edit/:id" element={<EditProperty />} />

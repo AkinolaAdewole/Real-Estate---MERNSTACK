@@ -24,7 +24,7 @@ app.get('/', (req,res)=>{
 });
 
 app.use('/api/users', userRoutes);
-app.use('/api/Properties', propertyRoutes);
+app.use('/api/properties', propertyRoutes);
 
 
 const port= 3800;

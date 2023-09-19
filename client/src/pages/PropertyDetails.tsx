@@ -23,11 +23,18 @@ const PropertyDetails = () => {
     const { data: user } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
     });
+
+  //   const { data: user } = useGetIdentity<{
+  //     email: string;
+  // }>();
+
     const { queryResult } = useShow();
     const { mutate } = useDelete();
     const { id } = useParams();
 
     const { data, isLoading, isError } = queryResult;
+    console.log(data);
+    
 
     const propertyDetails = data?.data ?? {};
 
@@ -39,7 +46,9 @@ const PropertyDetails = () => {
         return <div>Something went wrong!</div>;
     }
 
-    const isCurrentUser = user.email === propertyDetails.creator.email;
+    // const isCurrentUser = user.email === propertyDetails.creator.email;
+    const isCurrentUser = user?.email === propertyDetails.creator?.email;
+
 
     const handleDeleteProperty = () => {
          // eslint-disable-next-line no-restricted-globals
