@@ -128,10 +128,10 @@ const updateProperty = async (req, res) => {
                 photo: photoUrl.url || photo,
             },
         );
-
+ 
         res.status(200).json({ message: "Property updated successfully" });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+       return res.status(500).json({ message: error.message });
     }
 };
 
@@ -150,16 +150,18 @@ const deleteProperty = async (req, res) => {
         const session = await mongoose.startSession();
         session.startTransaction();
 
-        propertyToDelete.remove({ session });
+        // propertyToDelete.remove({ session });
+        propertyToDelete.deleteOne({ session });
         propertyToDelete.creator.allProperties.pull(propertyToDelete);
 
         await propertyToDelete.creator.save({ session });
         await session.commitTransaction();
 
+        // res.status(204).end();
         res.status(200).json({ message: "Property deleted successfully" });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 };
 
