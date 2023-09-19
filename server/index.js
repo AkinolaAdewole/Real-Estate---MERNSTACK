@@ -3,21 +3,23 @@ import dotenv  from 'dotenv';
 import cors from 'cors';
 import createProxyMiddleware from 'http-proxy-middleware';
 
+const app = express();
+app.use(cors(
+    {
+        origin: "http://localhost:3000",
+        // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        // headers: 'Origin, X-Requested-With, Content-Type, Accept',
+      }
+));
+
 import connectDB from "./MongoDB/connect.js";
 import userRouter from './routes/user.routes.js';
 import propertyRouter from "./routes/property.routes.js";
 
 
-const app = express();
+
 app.use(express.json({limit:'50mb'}));
 dotenv.config();
-app.use(cors(
-    {
-        origin: '*',
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        headers: 'Origin, X-Requested-With, Content-Type, Accept',
-      }
-));
 
 app.get('/', (req,res)=>{
     res.send({message:"Hello world"});
