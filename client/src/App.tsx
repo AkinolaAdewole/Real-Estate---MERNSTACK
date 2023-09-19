@@ -88,62 +88,7 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 function App() {
   const { t, i18n } = useTranslation();
 
-  const authProvider: AuthBindings = {
-
-    // login: async ({ credential }: CredentialResponse): Promise<AuthActionResponse> => {
-    //   try {
-    //     const profileObj = credential ? parseJwt(credential) : null;
-    
-    //     if (profileObj) {
-    //       const response = await fetch(
-    //         "http://localhost:3500/api/v1/users",
-    //         {
-    //           method: "POST",
-    //           headers: { "Content-Type": "application/json" },
-    //           body: JSON.stringify({
-    //             name: profileObj.name,
-    //             email: profileObj.email,
-    //             avatar: profileObj.picture,
-    //           }),
-    //         }
-    //       );
-    
-    //       if (response.status === 200) {
-    //         const data = await response.json();
-    //         localStorage.setItem(
-    //           "user",
-    //           JSON.stringify({
-    //             ...profileObj,
-    //             avatar: profileObj.picture,
-    //             userid: data._id,
-    //           })
-    //         );
-    //         localStorage.setItem("token", `${credential}`);
-            
-    //         // Return a successful response
-    //         return {
-    //           success: true,
-    //           redirectTo: "/",
-    //         };
-    //       } else {
-    //         console.log("Login failed with response status:", response.status);
-    //         // Handle authentication error and reject the promise
-    //         throw new Error("Login failed");
-    //       }
-    //     }
-    //   } catch (error) {
-    //     // Handle any exceptions or network errors and reject the promise
-    //     console.error("Authentication error:", error);
-    //     throw new Error("Authentication failed");
-    //   }
-    
-    //   // Return a default response for unsuccessful login
-    //   return {
-    //     success: false,
-    //     redirectTo: "/login", // Adjust the redirect URL as needed
-    //   };
-    // },
-    
+  const authProvider: AuthBindings = {    
 
     login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
@@ -176,7 +121,6 @@ function App() {
               }),
           );
       } else {
-          // return Promise.reject();
           console.log("Login failed with response status:", response.status);
       }
 
