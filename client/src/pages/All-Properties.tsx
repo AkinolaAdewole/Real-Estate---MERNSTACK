@@ -162,6 +162,12 @@ const AllProperties = () => {
             <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
                 {allProperties?.map((property) => (
                     <PropertyCard
+                        key={property._id}
+                        id={property._id}
+                        title={property.title}
+                        location={property.location}
+                        price={property.price}
+                        photo={property.photo}
                     />
                 ))}
             </Box>
@@ -205,6 +211,7 @@ const AllProperties = () => {
                             )
                         }
                     >
+                      
                         {[10, 20, 30, 40, 50].map((size) => (
                             <MenuItem key={size} value={size}>
                                 Show {size}
