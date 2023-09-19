@@ -90,106 +90,106 @@ function App() {
 
   const authProvider: AuthBindings = {
 
-    login: async ({ credential }: CredentialResponse): Promise<AuthActionResponse> => {
-      try {
-        const profileObj = credential ? parseJwt(credential) : null;
+    // login: async ({ credential }: CredentialResponse): Promise<AuthActionResponse> => {
+    //   try {
+    //     const profileObj = credential ? parseJwt(credential) : null;
     
-        if (profileObj) {
-          const response = await fetch(
-            "http://localhost:3500/api/v1/users",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                name: profileObj.name,
-                email: profileObj.email,
-                avatar: profileObj.picture,
-              }),
-            }
-          );
+    //     if (profileObj) {
+    //       const response = await fetch(
+    //         "http://localhost:3500/api/v1/users",
+    //         {
+    //           method: "POST",
+    //           headers: { "Content-Type": "application/json" },
+    //           body: JSON.stringify({
+    //             name: profileObj.name,
+    //             email: profileObj.email,
+    //             avatar: profileObj.picture,
+    //           }),
+    //         }
+    //       );
     
-          if (response.status === 200) {
-            const data = await response.json();
-            localStorage.setItem(
-              "user",
-              JSON.stringify({
-                ...profileObj,
-                avatar: profileObj.picture,
-                userid: data._id,
-              })
-            );
-            localStorage.setItem("token", `${credential}`);
+    //       if (response.status === 200) {
+    //         const data = await response.json();
+    //         localStorage.setItem(
+    //           "user",
+    //           JSON.stringify({
+    //             ...profileObj,
+    //             avatar: profileObj.picture,
+    //             userid: data._id,
+    //           })
+    //         );
+    //         localStorage.setItem("token", `${credential}`);
             
-            // Return a successful response
-            return {
-              success: true,
-              redirectTo: "/",
-            };
-          } else {
-            console.log("Login failed with response status:", response.status);
-            // Handle authentication error and reject the promise
-            throw new Error("Login failed");
-          }
-        }
-      } catch (error) {
-        // Handle any exceptions or network errors and reject the promise
-        console.error("Authentication error:", error);
-        throw new Error("Authentication failed");
-      }
-    
-      // Return a default response for unsuccessful login
-      return {
-        success: false,
-        redirectTo: "/login", // Adjust the redirect URL as needed
-      };
-    },
-    
-
-    // login: async ({ credential }: CredentialResponse) => {
-    //   const profileObj = credential ? parseJwt(credential) : null;
-
-    //    if(profileObj){
-    //     const response = await fetch(
-    //       'http://localhost:3500/api/v1/users',
-    //       {
-    //         method:"POST",
-    //         headers:{"content-Type":"application/json"},
-    //         body: JSON.stringify({
-    //           name:profileObj.name,
-    //           email:profileObj.email,
-    //           avatar:profileObj.picture,
-    //         }),
+    //         // Return a successful response
+    //         return {
+    //           success: true,
+    //           redirectTo: "/",
+    //         };
+    //       } else {
+    //         console.log("Login failed with response status:", response.status);
+    //         // Handle authentication error and reject the promise
+    //         throw new Error("Login failed");
     //       }
-    //     );
-    //     const data = await response.json();
-
-    //     if(response.status=== 200){
-    //             localStorage.setItem(
-    //               "user",
-    //               JSON.stringify({
-    //                 ...profileObj,
-    //                 avatar: profileObj.picture,
-    //                 userid: data._id,
-    //               })
-    //             );
-    //     } else{
-    //       console.log("Login failed with response status:", response.status);
-    //       // return Promise.reject({
-    //       //   success: false,
-    //       //   message: "Login failed",
-    //       // });
     //     }
+    //   } catch (error) {
+    //     // Handle any exceptions or network errors and reject the promise
+    //     console.error("Authentication error:", error);
+    //     throw new Error("Authentication failed");
+    //   }
+    
+    //   // Return a default response for unsuccessful login
+    //   return {
+    //     success: false,
+    //     redirectTo: "/login", // Adjust the redirect URL as needed
+    //   };
+    // },
+    
 
-    //    }
-    //    localStorage.setItem("token", `${credential}`);
-    //    return Promise.resolve()
+    login: async ({ credential }: CredentialResponse) => {
+      const profileObj = credential ? parseJwt(credential) : null;
 
-    //    return {
-    //     success: true,
-    //      redirectTo: "/",
-    //    }
+       if(profileObj){
+        const response = await fetch(
+          'http://localhost:3800/api/v1/users',
+          {
+            method:"POST",
+            headers:{"content-Type":"application/json"},
+            body: JSON.stringify({
+              name:profileObj.name,
+              email:profileObj.email,
+              avatar:profileObj.picture,
+            }),
+          }
+        );
+        const data = await response.json();
 
-    // },  
+        if(response.status=== 200){
+                localStorage.setItem(
+                  "user",
+                  JSON.stringify({
+                    ...profileObj,
+                    avatar: profileObj.picture,
+                    userid: data._id,
+                  })
+                );
+        } else{
+          console.log("Login failed with response status:", response.status);
+          // return Promise.reject({
+          //   success: false,
+          //   message: "Login failed",
+          // });
+        }
+
+       }
+       localStorage.setItem("token", `${credential}`);
+      //  return Promise.resolve()
+
+       return {
+        success: true,
+         redirectTo: "/",
+       }
+
+    },  
 
 
 

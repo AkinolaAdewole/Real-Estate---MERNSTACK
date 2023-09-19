@@ -21,7 +21,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/properties', propertyRouter);
 
 
-const port= 3500;
+const port= 3800;
 const startserver= async()=>{
     try {
         connectDB(process.env.MongoDB_URL)
