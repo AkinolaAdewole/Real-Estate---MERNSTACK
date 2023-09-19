@@ -142,7 +142,7 @@ const deleteProperty = async (req, res) => {
         const { id } = req.params;
 
         const propertyToDelete = await Property.findById({ _id: id }).populate(
-            "creator",
+            "creator"
         );
 
         if (!propertyToDelete) throw new Error("Property not found");
@@ -158,6 +158,7 @@ const deleteProperty = async (req, res) => {
 
         res.status(200).json({ message: "Property deleted successfully" });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: error.message });
     }
 };
