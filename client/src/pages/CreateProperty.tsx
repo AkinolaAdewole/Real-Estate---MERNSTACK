@@ -1,67 +1,74 @@
-import React,{useState} from 'react'
-import { useGetIdentity } from '@refinedev/core'
-import {useForm } from '@refinedev/react-hook-form';
-import { FieldValue, FieldValues } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import Form from 'components/common/Form';
+import { useState } from "react";
+import { useGetIdentity } from "@refinedev/core";
+import { useForm } from "@refinedev/react-hook-form";
+
+import { FieldValues } from "react-hook-form";
+
+import Form from "components/common/Form";
 
 const CreateProperty = () => {
-  const navigate = useNavigate();
+    // const { data: user, error } = useGetIdentity({
+    //     v3LegacyAuthProviderCompatible: true,
+    // });
+    const { data: user, error } = useGetIdentity<{
+      email: string;
+      name: string;
+  }>();
 
-  const {data: user}= useGetIdentity({v3LegacyAuthProviderCompatible: true,});
+    const [propertyImage, setPropertyImage] = useState({ name: "", url: "" });
+    const {
+        refineCore: { onFinish, formLoading },
+        register,
+        handleSubmit,
+    } = useForm();
 
-  const[propertyImage, setPropertyImage]=useState({
-                  name:'',
-                     url:'' });
-
-  const { refineCore:{onFinish, formLoading}, 
-           register, handleSubmit}   = useForm();
-
-
-          // The handleImageChange function is defined with a parameter file of type File.
-  const handleImageChange=(file:File)=>{
-    // Inside the function, a constant named reader is declared as a 
-    // function that takes a readFile parameter of type File and returns a Promise<string>.
-      const reader = (readFile: File) =>
-      new Promise<string>((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReader.onload = () => resolve(fileReader.result as string);
-          fileReader.readAsDataURL(readFile);
-      });
+    const handleImageChange = (file: File) => {
+        const reader = (readFile: File) =>
+            new Promise<string>((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.onload = () => resolve(fileReader.result as string);
+                fileReader.readAsDataURL(readFile);
+            });
 
         reader(file).then((result: string) =>
             setPropertyImage({ name: file?.name, url: result }),
         );
-  };
+    };
 
-  // The reader function uses the FileReader API to read the content of the readFile and convert it to a Base64-encoded data URL. 
-  // It sets up an onload event handler to handle the successful reading of the file.
+    const onFinishHandler = async (data: FieldValues) => {
+        if (!propertyImage.name) return alert("Please select an image");
 
-  // Within the reader function, a Promise is returned that will resolve with the Base64-encoded data URL 
-  // when the file is successfully read.
+        // Check if user and user.email are defined before accessing them
+        if (!user || !user.email) {
+            console.error("User data is missing");
+            return; // Handle this case appropriately
+        }
 
+        await onFinish({
+            ...data,
+            photo: propertyImage.url,
+            email: user.email,
+        });
+    };
 
-   // onFinishHandler is where Refine will get all data and pass it to the backend
-  const onFinishHandler=async(data:FieldValues)=>{
-    if(!propertyImage.name){
-      alert('Please, select an image')
-    } else{
-      await onFinish({...data, photo:propertyImage.url, email:user.email})
+    // Handle the error state from useGetIdentity if needed
+    if (error) {
+        console.error("Error fetching user data:", error);
+        // Handle the error state appropriately
     }
-  };
 
-  return (
-      <Form
-      type="Create a property"
-      register={register}
-      onFinish={onFinish}
-      formLoading={formLoading}
-      handleSubmit={handleSubmit}
-      propertyImage={propertyImage}
-      handleImageChange={handleImageChange}
-      onFinishHandler={onFinishHandler}
-      />
-  )
-}
+    return (
+        <Form
+            type="Create"
+            register={register}
+            onFinish={onFinish}
+            formLoading={formLoading}
+            handleSubmit={handleSubmit}
+            handleImageChange={handleImageChange}
+            onFinishHandler={onFinishHandler}
+            propertyImage={propertyImage}
+        />
+    );
+};
 
-export default CreateProperty
+export default CreateProperty;
