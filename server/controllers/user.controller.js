@@ -1,6 +1,7 @@
 import userModel from "../MongoDB/models/user.js";
 
 const getAllUsers= async(req,res)=>{}
+
 const createUser = async(req,res)=>{
     try {
         const {name, email, avatar } = req.body;
