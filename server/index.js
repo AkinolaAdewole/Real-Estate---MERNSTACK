@@ -9,24 +9,22 @@ import propertyRouter from "./routes/property.routes.js";
 
 
 const app = express();
-// app.use(cors());
 app.use(express.json({limit:'50mb'}));
 dotenv.config();
-
-// Create a proxy for your API running on a different port
-const apiProxy = createProxyMiddleware('/api', {
-    target: 'http://localhost:3800', // The address of your API
-    changeOrigin: true,
-  });
-
-app.use('/api/users', apiProxy);
+app.use(cors(
+    {
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        headers: 'Origin, X-Requested-With, Content-Type, Accept',
+      }
+));
 
 app.get('/', (req,res)=>{
     res.send({message:"Hello world"});
 });
 
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/properties', propertyRouter);
+app.use('/api/users', userRouter);
+app.use('/api/properties', propertyRouter);
 
 
 const port= 3800;

@@ -149,57 +149,67 @@ function App() {
       const profileObj = credential ? parseJwt(credential) : null;
 
        if(profileObj){
-        // const response = await fetch(
-        //   'http://localhost:3800/api/v1/users',
-        //   {
-        //     method:"POST",
-        //     headers:{"content-Type":"application/json"},
-        //     body: JSON.stringify({
-        //       name:profileObj.name,
-        //       email:profileObj.email,
-        //       avatar:profileObj.picture,
-        //     }),
-        //   }
-        // );
-
-        try {
-          const response = await axios.post(
-            'http://localhost:3800/api/v1/users', // URL to your backend endpoint
-            {
-              name: profileObj.name,
-              email: profileObj.email,
-              avatar: profileObj.picture,
-            },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            }
-          )
-
-
-          if(response.status=== 200){
-            const data = await response.data
-                  localStorage.setItem(
-                    "user",
-                    JSON.stringify({
-                      ...profileObj,
-                      avatar: profileObj.picture,
-                      userid: data._id,
-                    })
-                  );
-          } else{
-            console.log("Login failed with response status:", response.status);
-            // return Promise.reject({
-            //   success: false,
-            //   message: "Login failed",
-            // });
+        const response = await fetch(
+          'http://localhost:3800/api/users',
+          {
+            method:"POST",
+            headers:{"content-Type":"application/json"},
+            body: JSON.stringify({
+              name:profileObj.name,
+              email:profileObj.email,
+              avatar:profileObj.picture,
+            }),
           }
-        } catch (error) {
-          console.error(error);
+        );
+
+        const data = await response.json();
+
+        if (response.status === 200) {
+          localStorage.setItem(
+              "user",
+              JSON.stringify({
+                  ...profileObj,
+                  avatar: profileObj.picture,
+                  userid: data._id,
+              }),
+          );
+      } else {
+          // return Promise.reject();
+          console.log("Login failed with response status:", response.status);
+      }
+
+        // try {
+        //   const response = await axios.post(
+        //     'http://localhost:3800/api/users', // URL to your backend endpoint
+        //     {
+        //       name: profileObj.name,
+        //       email: profileObj.email,
+        //       avatar: profileObj.picture,
+        //     },
+        //     {
+        //       headers: {
+        //         'Content-Type': 'application/json',
+        //       },
+        //     }
+        //   )
+
+        //   if(response.status=== 200){
+        //     const data = await response.data
+        //           localStorage.setItem(
+        //             "user",
+        //             JSON.stringify({
+        //               ...profileObj,
+        //               avatar: profileObj.picture,
+        //               userid: data._id,
+        //             })
+        //           );
+        //   } else{
+        //     console.log("Login failed with response status:", response.status);
+        //   }
+        // } catch (error) {
+        //   console.error(error);
           
-        }
-        // const data = await response.json();
+        // }
 
        
 
