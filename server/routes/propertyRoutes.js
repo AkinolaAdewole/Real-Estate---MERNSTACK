@@ -8,7 +8,7 @@ import { createProperty, deleteProperty,
 const router = express.Router();
 
 router.route('/').get(getAllProperties);
-router.route('/:id').get(getPropertyDetail);
+router.get('/:id',getPropertyDetail);
 router.post('/',createProperty);
 router.route('/:id').patch(updateProperty);
 router.route('/:id').delete(deleteProperty);
