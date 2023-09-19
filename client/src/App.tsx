@@ -127,73 +127,7 @@ function App() {
          redirectTo: "/",
        }
 
-    },
-
-    // login: async ({ credential }: CredentialResponse) => {
-    //   try {
-    //     const profileObj = credential ? parseJwt(credential) : null;
-    
-    //     if (profileObj) {
-    //       const response = await fetch(
-    //         'http://localhost:3500/api/v1/users',
-    //         {
-    //           method: "POST",
-    //           headers: { "content-Type": "application/json" },
-    //           body: JSON.stringify({
-    //             name: profileObj.name,
-    //             email: profileObj.email,
-    //             avatar: profileObj.picture,
-    //           }),
-    //         }
-    //       );
-    //       const data = await response.json();
-    
-    //       if (response.status === 200) {
-    //         localStorage.setItem(
-    //           "user",
-    //           JSON.stringify({
-    //             ...profileObj,
-    //             avatar: profileObj.picture,
-    //             userid: data._id,
-    //           })
-    //         );
-    //         localStorage.setItem("token", `${credential}`);
-    
-    //         // Return a resolved promise when login is successful
-    //         return Promise.resolve({
-    //           success: true,
-    //           redirectTo: "/",
-    //         });
-    //       } else {
-    //         console.log("Login failed with response status:", response.status);
-    
-    //         // Return a resolved promise with an error message when login fails
-    //         return Promise.resolve({
-    //           success: false,
-    //           message: "Login failed",
-    //         });
-    //       }
-    //     } else {
-    //       // Handle the case when there's no profileObj (e.g., no credential provided)
-    //       console.log("No credential provided");
-          
-    //       // Return a resolved promise with an error message
-    //       return Promise.resolve({
-    //         success: false,
-    //         message: "No credential provided",
-    //       });
-    //     }
-    //   } catch (error) {
-    //     console.error("Error during login:", error);
-    
-    //     // Return a resolved promise with an error message when there's an exception
-    //     return Promise.resolve({
-    //       success: false,
-    //       message: "An error occurred during login",
-    //     });
-    //   }
-    // },
-        
+    },  
 
 
     logout: async () => {
