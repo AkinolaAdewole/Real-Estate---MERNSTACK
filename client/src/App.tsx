@@ -124,41 +124,6 @@ function App() {
           console.log("Login failed with response status:", response.status);
       }
 
-        // try {
-        //   const response = await axios.post(
-        //     'http://localhost:3800/api/users', // URL to your backend endpoint
-        //     {
-        //       name: profileObj.name,
-        //       email: profileObj.email,
-        //       avatar: profileObj.picture,
-        //     },
-        //     {
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-        //     }
-        //   )
-
-        //   if(response.status=== 200){
-        //     const data = await response.data
-        //           localStorage.setItem(
-        //             "user",
-        //             JSON.stringify({
-        //               ...profileObj,
-        //               avatar: profileObj.picture,
-        //               userid: data._id,
-        //             })
-        //           );
-        //   } else{
-        //     console.log("Login failed with response status:", response.status);
-        //   }
-        // } catch (error) {
-        //   console.error(error);
-          
-        // }
-
-       
-
        }
        localStorage.setItem("token", `${credential}`);
       //  return Promise.resolve()
