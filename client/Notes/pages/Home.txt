@@ -1,0 +1,3 @@
+This code represents a React component called Home. It displays a dashboard with various components, 
+including PieChart, TotalRevenue, and PropertyReferrals. The comments explain each section of the code and the purpose of the 
+components being used.
