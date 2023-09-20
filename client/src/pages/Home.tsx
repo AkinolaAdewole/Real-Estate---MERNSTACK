@@ -22,7 +22,7 @@ const Home = () => {
     resource: "properties",
     config: {
       pagination: {
-          pageSize: 4,
+          pageSize: 6,
         },
      },
    });

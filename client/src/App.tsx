@@ -234,17 +234,17 @@ function App() {
                   icon:<PeoplAltOutlined />
                 },
 
-                {
-                  name:"Reviews",
-                  list: Home,
-                  icon:<StarOutlineRounded />
-                },
+                // {
+                //   name:"Reviews",
+                //   list: Home,
+                //   icon:<StarOutlineRounded />
+                // },
 
-                {
-                  name:"Messages",
-                  list:Home,
-                  icon:<ChatBubbleOutline />
-                },
+                // {
+                //   name:"Messages",
+                //   list:Home,
+                //   icon:<ChatBubbleOutline />
+                // },
 
                 {
                   name:"my-profile",
@@ -304,12 +304,8 @@ function App() {
                   </Route>
 
                   <Route path="/my-profile">
-                    <Route index element={<MyProfile />} />
-                    {/* <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} /> */}
+                    <Route index element={<MyProfile />} /> 
                   </Route>
-
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
 
