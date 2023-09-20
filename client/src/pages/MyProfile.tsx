@@ -1,34 +1,17 @@
-
 import { useGetIdentity, useOne } from "@refinedev/core";
 
 import { Profile } from "components";
 
 const MyProfile = () => {
-    // const { data: user } = useGetIdentity({
-    //     v3LegacyAuthProviderCompatible: true,
-    // });
-
-    const { data: user } = useGetIdentity<{
-      email: string;
-      name: string;
-      id: any;
-      userid:any;
-  }>();
-  
-
+    const { data: user } = useGetIdentity({
+        v3LegacyAuthProviderCompatible: true,
+    });
     const { data, isLoading, isError } = useOne({
-        resource: "user",
+        resource: "users",
         id: user?.userid,
     });
 
-    //  console.log(data);
-     console.log("User:", user);
-    
-    const myProfile = data?.data ?? {};
-    // console.log("User:", user);
-    // console.log("Data:", data);
-    // console.log("MyProfile:", myProfile);
-    
+    const myProfile = data?.data ?? [];
 
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error...</div>;

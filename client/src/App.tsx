@@ -247,7 +247,7 @@ function App() {
                 },
 
                 {
-                  name:"My profile",
+                  name:"my-profile",
                   list:MyProfile,
                   options:{label: "My profile"},
                 }
@@ -303,11 +303,11 @@ function App() {
                     <Route index element={<Home />} />
                   </Route>
 
-                  <Route path="/MyProfile">
+                  <Route path="/my-profile">
                     <Route index element={<MyProfile />} />
-                    <Route path="create" element={<CategoryCreate />} />
+                    {/* <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                    <Route path="show/:id" element={<CategoryShow />} /> */}
                   </Route>
 
                   <Route path="*" element={<ErrorComponent />} />

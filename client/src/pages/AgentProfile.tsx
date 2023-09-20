@@ -5,6 +5,12 @@ import { useParams } from "react-router-dom";
 import { Profile } from "components";
 
 const AgentProfile = () => {
+
+    const{ data : user } = useGetIdentity<{
+        email: string;
+        name: string;
+    }>();
+
     const { id } = useParams();
 
     const { data, isLoading, isError } = useOne({
