@@ -1,6 +1,6 @@
 // Import necessary React and external libraries
 import React from 'react';
-import { useList } from '@refinedev/core/dist/hooks';
+import { useList } from '@refinedev/core';
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import Stack from '@mui/material/Stack';
@@ -15,11 +15,25 @@ import {
   PropertyReferrals,
   TotalRevenue,
   PropertyCard,
-  TopAgent
 } from "components";
 
 // Define the Home component
 const Home = () => {
+  const { data, isLoading, isError } = useList({ 
+    resource: "properties",
+    config: {
+      pagination: {
+          pageSize: 4,
+        },
+     },
+   });
+
+   const latestProperties = data?.data ?? [];
+
+   if (isLoading) return <Typography>Loading...</Typography>;
+   if (isError) return <Typography>Something went wrong!</Typography>;
+  
+
   return (
     // Outermost container for the Home component
     <Box>
