@@ -4,11 +4,7 @@ import cors from 'cors';
 import createProxyMiddleware from 'http-proxy-middleware';
 
 const app = express();
-app.use(cors(
-    {
-        origin: "http://localhost:3000",
-      }
-));
+app.use(cors());
 
 import connectDB from "./MongoDB/connect.js";
 import userRoutes from './routes/userRoutes.js';
