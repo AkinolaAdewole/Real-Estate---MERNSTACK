@@ -23,7 +23,7 @@ const AgentProfile = () => {
     }
 
     const myProfile = data?.data ?? {};
-    console.log(data);
+    // console.log(data);
 
     const { name = "N/A", email = "N/A", avatar = "", allProperties = [] } = myProfile;
 
