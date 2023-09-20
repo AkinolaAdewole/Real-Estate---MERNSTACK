@@ -37,15 +37,20 @@ const AgentCard = ({
     avatar,
     noOfProperties,
 }: AgentCardProp) => {
+
     const { data: currentUser } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
     });
 
-    const generateLink = () => {
-        if (currentUser.email === email) return "/my-profile";
 
+    const generateLink = () => {
+        if (currentUser && currentUser.email === email) {
+            return "/my-profile";
+        }
+        
         return `/agents/show/${id}`;
     };
+    
 
     return (
         <Box
