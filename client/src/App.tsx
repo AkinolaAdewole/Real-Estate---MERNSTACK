@@ -292,7 +292,7 @@ function App() {
 
                   <Route path="/Agents">
                     <Route index element={<Agents />} />
-                    <Route path="/Agents/AgentProfile" element={<AgentProfile />} />
+                    <Route path="show/:id" element={<AgentProfile />} />
                   </Route>
 
                   <Route path="/Reviews">
@@ -303,7 +303,7 @@ function App() {
                     <Route index element={<Home />} />
                   </Route>
 
-                  <Route path="/My Profile">
+                  <Route path="/MyProfile">
                     <Route index element={<MyProfile />} />
                     <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
