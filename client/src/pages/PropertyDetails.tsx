@@ -20,9 +20,6 @@ function checkImage(url: any) {
 
 const PropertyDetails = () => {
     const navigate = useNavigate();
-    // const { data: user } = useGetIdentity({
-    //     v3LegacyAuthProviderCompatible: true,
-    // });
 
     const { data: user } = useGetIdentity<{
       email: string;
@@ -34,11 +31,9 @@ const PropertyDetails = () => {
     const { id } = useParams();
 
     const { data, isLoading, isError } = queryResult;
-    // console.log(data);
     
 
     const propertyDetails = data?.data ?? {};
-    // console.log(data?.data);
     
 
     if (isLoading) {
@@ -49,7 +44,6 @@ const PropertyDetails = () => {
         return <div>Something went wrong!</div>;
     }
 
-    // const isCurrentUser = user.email === propertyDetails.creator.email;
     const isCurrentUser = user?.email === propertyDetails.creator?.email;
 
 

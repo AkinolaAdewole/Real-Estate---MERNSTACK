@@ -228,7 +228,7 @@ function App() {
                 },
 
                 {
-                  name: "Agents",
+                  name: "agents",
                   list: Agents,
                   show: AgentProfile,
                   icon:<PeoplAltOutlined />
@@ -290,7 +290,7 @@ function App() {
                     <Route path="show/:id" element={<PropertyDetails />} />
                   </Route>
 
-                  <Route path="/Agents">
+                  <Route path="/agents">
                     <Route index element={<Agents />} />
                     <Route path="show/:id" element={<AgentProfile />} />
                   </Route>

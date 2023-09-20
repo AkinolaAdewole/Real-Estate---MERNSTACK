@@ -1,69 +1,40 @@
 import { useOne } from "@refinedev/core";
+import { useGetIdentity } from "@refinedev/core";
 import { useParams } from "react-router-dom";
 
 import { Profile } from "components";
-
 
 const AgentProfile = () => {
     const { id } = useParams();
 
     const { data, isLoading, isError } = useOne({
         resource: "users",
-        id: id as string,
+        // id: id as string,
+        id
     });
 
+    // console.log(id);
+    // console.log(resource);
     
     
 
-    if (isLoading) return <div>Loading...</div>;
-
-    if (isError || !data) {
-        // Handle the error here, such as displaying a generic error message
-        return <div>Error: An error occurred.</div>;
-    }
-
+    // Check if data is defined before accessing data.data
     const myProfile = data?.data ?? {};
-    // console.log(data);
+    // console.log(myProfile);
+    
 
-    const { name = "N/A", email = "N/A", avatar = "", allProperties = [] } = myProfile;
+    if (isLoading) return <div>loading...</div>;
+    if (isError) return <div>error...</div>;
 
     return (
         <Profile
             type="Agent"
-            name={name}
-            email={email}
-            avatar={avatar}
-            properties={allProperties}
+            name={myProfile.name}
+            email={myProfile.email}
+            avatar={myProfile.avatar}
+            properties={myProfile.allProperties}
         />
     );
 };
-
-
-
-// const AgentProfile = () => {
-//     const { id } = useParams();
-
-//     const { data, isLoading, isError } = useOne({
-//         resource: "users",
-//         id: id as string,
-//     });
-
-//     console.log(data);
-
-//     const myProfile = data?.data ?? [];
-
-//     if (isLoading) return <div>loading...</div>;
-//     if (isError) return <div>error...</div>;
-
-//     return (
-//         <Profile
-//             type="Agent"
-//             name={myProfile.name}
-//             email={myProfile.email}
-//             avatar={myProfile.avatar}
-//             properties={myProfile.allProperties}
-//         />
-//     );
-// };
 
 export default AgentProfile;
