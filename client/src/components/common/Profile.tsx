@@ -100,7 +100,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                                             fontSize={14}
                                             color="#11142D"
                                         >
-                                            4517 Washington Ave. Manchaster,
+                                            4517 Washington Ave. Manchester,
                                             Kentucky 39495
                                         </Typography>
                                     </Box>
