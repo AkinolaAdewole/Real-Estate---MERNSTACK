@@ -95,7 +95,8 @@ function App() {
 
        if(profileObj){
         const response = await fetch(
-          'http://localhost:3800/api/users',
+          // 'http://localhost:3800/api/users',
+          "https://real-estate-theta-roan.vercel.app/api/users",
           {
             method:"POST",
             headers:{"content-Type":"application/json"},
@@ -205,7 +206,8 @@ function App() {
           <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
           <RefineSnackbarProvider>
             <Refine
-              dataProvider={dataProvider("http://localhost:3800/api")}
+              // dataProvider={dataProvider("http://localhost:3800/api")}
+              dataProvider={dataProvider("https://real-estate-theta-roan.vercel.app/api")}
               notificationProvider={notificationProvider}
               routerProvider={routerBindings}
               authProvider={authProvider}
