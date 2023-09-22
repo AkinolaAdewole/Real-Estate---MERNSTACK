@@ -50,7 +50,7 @@ import { CredentialResponse } from "../interfaces/google";
   return (
     <Box 
       component='div'
-       sx={{backgroundColor:'#FCFCFC',
+       sx={{backgroundColor:'#dce0dc',
             backgroundSize:"cover"}}>
          <Container
           style={{
